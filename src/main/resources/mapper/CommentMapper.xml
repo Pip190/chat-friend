@@ -144,4 +144,33 @@
             create_time =  #{createTime,jdbcType=TIMESTAMP}
         where   comment_id = #{commentId,jdbcType=INTEGER} 
     </update>
+    <select id="selectByTrendsIdAndCommentLevelOrderByTopStatusDescAndCreateTimeDesc" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tcd_comment
+        where
+        trends_id = #{trendsId,jdbcType=NUMERIC}
+        AND comment_level = #{commentLevel,jdbcType=NUMERIC}
+        order by top_status desc , create_time desc
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tcd_comment
+    </select>
+    <select id="selectByParentCommentIdAndTrendsIdAndCommentLevelOrderByCreateTimeDesc" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tcd_comment
+        where
+        parent_comment_id = #{parentCommentId,jdbcType=NUMERIC}
+        AND trends_id = #{trendsId,jdbcType=NUMERIC}
+        AND comment_level = #{commentLevel,jdbcType=NUMERIC}
+        order by create_time desc
+    </select>
+    <update id="updatePraiseNumByCommentId">
+        update tcd_comment
+        set praise_num = #{praiseNum,jdbcType=INTEGER}
+        where comment_id = #{commentId,jdbcType=INTEGER}
+    </update>
 </mapper>
