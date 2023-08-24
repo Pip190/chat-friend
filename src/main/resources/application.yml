@@ -1,0 +1,30 @@
+#mysql
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.177:3306/websocket_item?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: cd@123.com
+    type: com.alibaba.druid.pool.DruidDataSource
+# mybatis????
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.chongdong.model
+# ???????
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+    # SQL????
+  # ????
+  servlet:
+    multipart:
+      enabled: true #???????
+      max-file-size: 10MB #???????????10MB
+      max-request-size: 100MB #???????????????100MB
+logging:
+  level:
+    com.chongdong.mapper: debug
+server:
+  port: 8088
