@@ -20,23 +20,22 @@ public class CommentController {
     @GetMapping
     public Result<PageInfo<Comment>> listCommentALl(@RequestParam(defaultValue = "1") int pageNum,
                                                     @RequestParam(defaultValue = "10") int pageSize){
-        log.info("进来了");
+
         return commentService.listCommentPage(pageNum,pageSize);
     }
     @GetMapping("/levelOne")
     public Result<List<Comment>> selectByTrendsIdAndCommentLevel(Integer trendsId, Integer commentLevel){
-        log.info("进来了");
+
         return commentService.selectByTrendsIdAndCommentLevel(trendsId, commentLevel);
     }
 
     @GetMapping("/levelTwo")
     public Result<List<Comment>> selectByParentCommentIdAndTrendsIdAndCommentLevel(Integer parentCommentId, Integer trendsId, Integer commentLevel){
-        log.info("进来了");
+
         return commentService.selectByParentCommentIdAndTrendsIdAndCommentLevel(parentCommentId, trendsId, commentLevel);
     }
     @PutMapping("/praise")
     public Result<Comment> updatePraiseNumByCommentId(Integer commentId, Integer praiseNum){
-        log.info("进来了");
         return commentService.updatePraiseNumByCommentId(commentId, praiseNum);
     }
 }
